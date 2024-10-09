@@ -1,6 +1,6 @@
 # vue-ui
 
-This template should help get you started developing with Vue 3 in Vite.
+Just a ui library for learning purposes
 
 ## Recommended IDE Setup
 
