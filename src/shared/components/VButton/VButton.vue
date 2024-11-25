@@ -1,5 +1,5 @@
 <template>
-  <button class="v-button" click="console.log('click')" :disabled="isDisabled" v-bind="listeners">
+  <button class="v-button" :disabled="isDisabled" v-bind="listeners">
     <slot name="before" />
     <slot />
     <slot name="after" />
