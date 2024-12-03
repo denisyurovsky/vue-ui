@@ -1,6 +1,6 @@
 # vue-ui
 
-Just a ui library for learning purposes
+Just a ui library for learning purposes 
 
 ## Recommended IDE Setup
 
