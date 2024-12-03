@@ -86,6 +86,10 @@ const inputListeners = computed(() => {
 
   &--disabled {
     cursor: not-allowed;
+
+    & input {
+      cursor: not-allowed;
+    }
   }
   & input {
     outline: none;

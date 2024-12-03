@@ -19,16 +19,22 @@
     </v-input>
     <v-button @click="toggle2">disable input</v-button>
   </div>
+  <div>
+    <v-checkbox v-model="checkboxModel" />
+    <v-checkbox disabled />
+    checkbox: {{ checkboxModel }}
+  </div>
 </template>
 
 <script setup lang="ts">
-import { VButton, VInput } from '@/shared/components'
+import { VButton, VInput, VCheckbox } from '@/shared/components'
 import { useToggle } from '@/shared/composables'
 import { ref } from 'vue'
 const [disabled, _, toggle] = useToggle()
 const [disabled2, _2, toggle2] = useToggle()
 
 const inputModel = ref('')
+const checkboxModel = ref(false)
 
 defineOptions({
   name: 'homePage'
