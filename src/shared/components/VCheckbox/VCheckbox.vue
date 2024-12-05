@@ -36,7 +36,7 @@ const classes = computed(() => [
   }
   &--active {
     .v-checkbox__label {
-      background-color: teal;
+      background-color: var(--color-teal);
       color: var(--color-white);
     }
   }
@@ -44,7 +44,7 @@ const classes = computed(() => [
   &__label {
     width: 20px;
     height: 20px;
-    border: 1px solid teal;
+    border: 1px solid var(--color-teal);
     display: flex;
     align-items: center;
     justify-content: center;
