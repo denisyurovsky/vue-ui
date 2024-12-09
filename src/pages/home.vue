@@ -25,33 +25,30 @@
     checkbox: {{ checkboxModel }}
   </div>
   <div>
-    <v-radio-group name="test">
-      <v-radio
-        v-model="radioModel"
-        v-for="option in radioOptions"
-        :label="option.label"
-        :key="option.value"
-        :value="option.value"
-        :disabled="option.disabled"
-      />
-    </v-radio-group>
+    <v-radio
+      v-model="radioModel"
+      v-for="option in radioOptions"
+      :label="option.label"
+      :key="option.value"
+      :value="option.value"
+      :disabled="option.disabled"
+    />
     radio model: {{ radioModel }}
 
-    <v-radio-group name="test2" disabled>
-      <v-radio
-        v-model="radioModelDisabled"
-        v-for="option in radioOptions"
-        :value="option.value"
-        :label="option.label"
-        :key="option.value"
-      />
-    </v-radio-group>
+    <v-radio
+      v-model="radioModelDisabled"
+      v-for="option in radioOptions"
+      :value="option.value"
+      :label="option.label"
+      :key="option.value"
+      disabled
+    />
     this is fully disabled radio group
   </div>
 </template>
 
 <script setup lang="ts">
-import { VButton, VInput, VCheckbox, VRadioGroup, VRadio } from '@/shared/components'
+import { VButton, VInput, VCheckbox, VRadio } from '@/shared/components'
 import { useToggle } from '@/shared/composables'
 import { ref } from 'vue'
 import type { IVRadioOptions } from '@/shared/components/VRadio/types'

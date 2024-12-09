@@ -1,8 +1,3 @@
-export interface IVRadioGroupProps {
-  name: string
-  disabled?: boolean
-}
-
 export interface IVRadioOptions {
   value: any
   label: string | number

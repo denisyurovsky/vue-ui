@@ -4,9 +4,8 @@
       <input
         v-on="listeners"
         :value="value"
-        :disabled="isDisabled"
+        :disabled="disabled"
         type="radio"
-        :name="radioContext?.name"
         class="v-radio__input"
         v-model="model"
       />
@@ -17,27 +16,17 @@
 
 <script setup lang="ts">
 import type { IVRadioModelValue, IVRadioProps } from '@/shared/components/VRadio/types'
-import { useRadioContext } from '@/shared/components/VRadio/useRadioContext'
 import { computed, useAttrs } from 'vue'
 import { useListeners } from '@/shared/composables'
 
 const props = defineProps<IVRadioProps>()
 const model = defineModel<IVRadioModelValue>({ required: true })
-const radioContext = useRadioContext()
 const attrs = useAttrs()
 const listeners = useListeners(attrs)
 
-const isDisabled = computed(() => {
-  if (typeof radioContext?.disabled === 'boolean') {
-    return props.disabled || radioContext?.disabled
-  }
-
-  return props.disabled
-})
-
 const classes = computed(() => [
   {
-    'v-radio--disabled': isDisabled.value
+    'v-radio--disabled': props.disabled
   }
 ])
 </script>
