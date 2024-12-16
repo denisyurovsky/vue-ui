@@ -87,10 +87,10 @@
 
 <script setup lang="ts">
 import { VButton, VInput, VCheckbox, VRadio, VForm, VFormItem } from '@/shared/components'
-import { useCycleList, useToggle } from '@/shared/composables'
-import { ref, useTemplateRef } from 'vue'
 import type { IVRadioOptions } from '@/shared/components/VRadio/types'
 import type { IVFormExpose } from '@/shared/components/VForm/types'
+import { useCycleList, useToggle } from '@/shared/composables'
+import { ref, useTemplateRef } from 'vue'
 
 const [disabled, , toggle] = useToggle()
 const [disabled2, , toggle2] = useToggle()
@@ -150,17 +150,6 @@ const rules = ref({
 
 async function onFormSubmit() {
   const res = await form.value?.validate()
-  if (res) {
-    let newValues = await fetch('http://127.0.0.1:3000/form', {
-      method: 'POST',
-      body: JSON.stringify(formModel.value),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    newValues = await newValues.json();
-    formModel.value = newValues;
-  }
 }
 
 function onReset() {
