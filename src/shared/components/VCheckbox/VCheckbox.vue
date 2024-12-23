@@ -2,7 +2,13 @@
   <div :class="classes" class="v-checkbox">
     <label class="v-checkbox__label">
       &#x2717;
-      <input :disabled="disabled" v-model="model" class="v-checkbox__input" type="checkbox" />
+      <input
+        :value="value"
+        :disabled="disabled"
+        v-model="model"
+        class="v-checkbox__input"
+        type="checkbox"
+      />
     </label>
   </div>
 </template>
@@ -10,13 +16,26 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { IVCheckboxProps } from '@/shared/components/VCheckbox/types'
+import { isBoolean } from '@/shared/utils'
 
 const model = defineModel()
 const props = defineProps<IVCheckboxProps>()
 
+const isChecked = computed<boolean>(() => {
+  if (isBoolean(model.value)) {
+    return model.value
+  }
+
+  if (props.value && !isBoolean(props.value) && Array.isArray(model.value)) {
+    return model.value.includes(props.value)
+  }
+
+  return (props.value && model.value) === props.value
+})
+
 const classes = computed(() => [
   {
-    'v-checkbox--active': model.value,
+    'v-checkbox--active': isChecked.value,
     'v-checkbox--disabled': props.disabled
   }
 ])
