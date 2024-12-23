@@ -1,9 +1,16 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <RouterView />
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/components">Components</router-link>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <router-view />
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
