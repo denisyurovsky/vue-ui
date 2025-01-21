@@ -13,20 +13,20 @@
 </template>
 
 <script setup lang="ts">
-import type { VSelectProps } from '@/shared/components/VSelect/types'
+import type { VSelectEmits, VSelectProps } from '@/shared/components/VSelect/types'
 
 defineProps<VSelectProps>()
+const emit = defineEmits<VSelectEmits>()
 
-const model = defineModel({
-  required: true
-})
+const model = defineModel()
 
 function isSelected(value: string | number) {
   return value === model.value
 }
 
 function changeModel(event) {
-  model.value = JSON.parse(event.target.value)
+  model.value = event.target.value
+  emit('change', event.target.value)
 }
 </script>
 

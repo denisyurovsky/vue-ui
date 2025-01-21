@@ -3,3 +3,7 @@ export interface VSelectProps {
   options: Array<string | number>
   placeholder: string
 }
+
+export interface VSelectEmits {
+  (event: 'change', payload: string | number): void
+}
