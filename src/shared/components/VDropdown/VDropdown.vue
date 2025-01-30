@@ -1,5 +1,5 @@
 <template>
-  <div class="v-dropdown">
+  <div v-click-outside="hide" class="v-dropdown">
     <slot
       name="trigger"
       :is-visible="isVisible"
@@ -18,9 +18,12 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { useToggle } from '@/shared/composables'
-import type { IVDropdownEmits } from '@/shared/components/VDropdown/types'
+import { vClickOutside } from '@/shared/directives/vClickOutside'
+import type { IVDropdownEmits, IVDropdownExpose } from '@/shared/components/VDropdown/types'
 
 const emit = defineEmits<IVDropdownEmits>()
+
+const hide = () => setVisible(false)
 
 function onAfterEnter(payload: Element) {
   emit('opened', payload)
@@ -39,16 +42,23 @@ watch(isVisible, (value) => {
     emit('close')
   }
 })
+
+defineExpose<IVDropdownExpose>({
+  setVisible,
+  isVisible
+})
 </script>
 
 <style scoped>
 .v-dropdown {
   position: relative;
+  cursor: pointer;
   &__menu {
     position: absolute;
     top: 100%;
     left: 0;
     border: 1px solid var(--color-teal);
+    cursor: pointer;
   }
 }
 </style>

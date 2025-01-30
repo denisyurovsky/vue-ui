@@ -1,3 +1,5 @@
+import type { Ref } from 'vue'
+
 export interface IVDropdownSlots {
   default?: () => any
   trigger?: (props: {
@@ -12,4 +14,9 @@ export interface IVDropdownEmits {
   (event: 'closed', payload: Element): void
   (event: 'open'): void
   (event: 'close'): void
+}
+
+export interface IVDropdownExpose {
+  setVisible: (payload: boolean) => void
+  isVisible: Ref<boolean>
 }

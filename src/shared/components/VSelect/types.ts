@@ -1,9 +1,12 @@
+import type { IVDropdownEmits } from '@/shared/components/VDropdown/types'
+
 export interface VSelectProps {
   multiple?: boolean
+  title: string
   options: Array<string | number>
-  placeholder: string
+  disabled?: boolean
 }
 
-export interface VSelectEmits {
+export interface VSelectEmits extends IVDropdownEmits {
   (event: 'change', payload: string | number): void
 }

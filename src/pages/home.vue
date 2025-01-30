@@ -46,25 +46,30 @@
     this is fully disabled radio group
   </div>
 
+  <!--  <div>-->
+  <!--    useCycleList-->
+
+  <!--    <component v-model="cycleModel[index]" :is="state" />-->
+
+  <!--    <v-button @click="prev">prev</v-button>-->
+  <!--    <v-button @click="next">next</v-button>-->
+  <!--    <v-button @click="reset">reset</v-button>-->
+  <!--  </div>-->
+
   <div>
-    useCycleList
-
-    <component v-model="cycleModel[index]" :is="state" />
-
-    <v-button @click="prev">prev</v-button>
-    <v-button @click="next">next</v-button>
-    <v-button @click="reset">reset</v-button>
+    <v-select multiple title="choose option" :options="[1, 2, 3, 4, 5]" v-model="selectModel" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { VButton, VInput, VCheckbox, VRadio } from '@/shared/components'
+import { VButton, VInput, VCheckbox, VRadio, VSelect } from '@/shared/components'
 import type { IVRadioOptions } from '@/shared/components/VRadio/types'
 import { useCycleList, useToggle } from '@/shared/composables'
 import { ref } from 'vue'
 const [disabled, , toggle] = useToggle()
 const [disabled2, , toggle2] = useToggle()
 
+const selectModel = ref([])
 const inputModel = ref('')
 const checkboxModel = ref(false)
 
