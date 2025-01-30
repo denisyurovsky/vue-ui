@@ -69,7 +69,7 @@ import { ref } from 'vue'
 const [disabled, , toggle] = useToggle()
 const [disabled2, , toggle2] = useToggle()
 
-const selectModel = ref([])
+const selectModel = ref()
 const inputModel = ref('')
 const checkboxModel = ref(false)
 

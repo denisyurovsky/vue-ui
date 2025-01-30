@@ -34,16 +34,24 @@ const props = defineProps<VSelectProps>()
 const emit = defineEmits<VSelectEmits>()
 const dropdownRef = ref<IVDropdownExpose>()
 
-//TODO типы на основе пропсов
 const model = defineModel<string | number | undefined | Array<string | number>>({
-  required: true
+  required: true,
+  validator(value, props) {
+    if (props.multiple && !Array.isArray(value)) {
+      console.error('v-select modelValue should be an Array when using multiple prop')
+
+      return false
+    }
+
+    return true
+  }
 })
 
 const titleOrValue = computed(() => {
   if (!props.multiple) {
     return model.value || props.title
   } else {
-    if (model.value.length) {
+    if (Array.isArray(model.value) && model.value.length) {
       return model.value.join(', ')
     } else {
       return props.title
@@ -55,10 +63,12 @@ function onOptionClick(option: string | number) {
   if (!props.multiple) {
     model.value = option
   } else {
-    if (model.value.includes(option)) {
-      model.value = model.value.filter((item) => item !== option)
-    } else {
-      model.value.push(option)
+    if (Array.isArray(model.value)) {
+      if (model.value.includes(option)) {
+        model.value = model.value.filter((item) => item !== option)
+      } else {
+        model.value.push(option)
+      }
     }
   }
 
